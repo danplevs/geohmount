@@ -1,0 +1,14 @@
+data_full ano-mes-dia hrs:mins:segs
+altitude altitude computada na origem
+campanha código referente à campanha de coleta
+rain chuva horária segundo os dados da NOAA
+evt_id identificador do evento
+evt_sum_rain total de chuva no evento segundo a respectiva estação meteorológica
+evt_avg_rain média de chuva no evento segundo a respectiva estação meteorológica
+evt_max_rain máxima (horária) de chuva no evento segundo a respectiva estação meteorológica
+direcao_graus direção da retrotrajetória em graus
+velocidade velocidade da parcela de ar em km/h
+direcao_cat variável categórica representando a direção da retrotrajetória
+velocidade_cat variável categórica representando a velocidade da parcela de ar
+evt_sum_rain_cat variável categórica representando a soma da chuva no evento aproximada
+data mês, ano

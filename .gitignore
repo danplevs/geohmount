@@ -128,3 +128,6 @@ dmypy.json
 .pyre/
 logos-png/desktop.ini
 *.ini
+
+# Credentials
+credentials.json

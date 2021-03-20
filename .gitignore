@@ -131,3 +131,7 @@ logos-png/desktop.ini
 
 # Credentials
 credentials.json
+
+# Image formats
+*.png
+*.jpeg

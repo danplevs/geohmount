@@ -1,3 +1,5 @@
+import plotly.express as px
+
 def wind_rose(dataframe, kind='vel', title='<b>Distribuição das massas de ar resultantes em chuva no Soberbo</b>', 
              legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True,
              color='velocidade_cat', color_sequence= px.colors.sequential.Plasma_r, font_color=None, template='plotly'):

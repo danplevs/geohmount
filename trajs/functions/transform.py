@@ -13,6 +13,11 @@ def velocidade_categorica(velocidade_kmh):
     indice = int(velocidade_kmh // 5)
     return velocidades[indice]
 
+def ps_velocidade_categorica(velocidade_kmh):
+    velocidades = ('0-10 km/h', '10-20 km/h', '20-30 km/h', '30-40 km/h', '40-50 km/h', '50-60 km/h', '60-70 km/h', '70-80 km/h', '80-90 km/h')
+    indice = int(velocidade_kmh // 10)
+    return velocidades[indice]
+
 def chuva_categorica(chuva_mm):
     chuvas = ('5-20 mm', '20-35 mm', '35-50 mm', '50-65 mm', '65-80 mm', '80-95 mm', '95-110 mm', '110-125 mm', '125-130 mm')
     chuva_mm -= 5

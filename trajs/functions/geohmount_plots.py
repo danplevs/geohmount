@@ -1,7 +1,7 @@
 import plotly.express as px
 
 def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das massas de ar resultantes em chuva no Soberbo</b>', 
-             legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True,
+             legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True, bg=True,
              color='velocidade_cat', color_sequence= px.colors.sequential.Plasma_r, font_color=None, template='plotly'):
         
     direcoes = ("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
@@ -17,15 +17,19 @@ def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das
         color_sequence = px.colors.sequential.Blues
         medidas = ('5-20 mm', '20-35 mm', '35-50 mm', '50-65 mm', '65-80 mm', '80-95 mm', '95-110 mm', '110-125 mm', '125-130 mm')
         category_orders={'direcao_cat': direcoes, 'evt_soma_chuva_cat': medidas}
-    
-    
+
+    if bg == True:
+        bgcolor='rgba(255,255,255,1)'
+    else:
+        bgcolor='rgba(0,0,0,0)'
     
     color_map = dict(zip(medidas, color_sequence))
     
     fig = px.bar_polar(dataframe, r='frequencia', theta='direcao_cat', color=color, color_discrete_map=color_map,
                        category_orders=category_orders) 
 
-    fig.update_layout(template=template,
+    fig.update_layout(template=template, 
+                      paper_bgcolor=bgcolor,
                       legend=dict(traceorder='reversed', 
                                   yanchor='top', 
                                   y=0.99, 

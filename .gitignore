@@ -136,3 +136,6 @@ credentials.json
 *.png
 *.jpeg
 *.svg
+
+# Photoshop
+*.psd

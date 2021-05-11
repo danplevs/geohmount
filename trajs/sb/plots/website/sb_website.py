@@ -60,7 +60,7 @@ geohmount_logo = base64.b64encode(open(img, 'rb').read())
 # %%
 fig = make_subplots(rows=1, cols=2,
                     specs=[[{'type': 'table'}, {'type': 'polar'}]],
-                    column_widths=[0.5, 0.5],
+                    column_widths=[0.3, 0.7],
                     row_heights=[1])
 
 fig.add_trace(go.Table(
@@ -126,6 +126,5 @@ fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', width=1080, height=600,
                  ),
                 )   
 fig.show()
-fig.write_html('plots/website/sb_trajs.html')
-
-
+fig.write_image('sb_trajs.png', width=1000, height = 750)
+# fig.write_html('plots/website/sb_trajs.html')

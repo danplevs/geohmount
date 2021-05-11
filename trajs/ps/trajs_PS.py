@@ -40,7 +40,7 @@ gp_vel['frequencia'] = gp_vel['frequencia'] / gp_vel['frequencia'].sum() * 100
 gp_vel.head(5)
 
 # %%
-fig = wind_rose(gp_vel, location='ps', title='<b>Distribuição das massas de ar resultantes em chuva na Pedra do Sino',
+fig = wind_rose(gp_vel, location='ps', title='<b>Pedra do Sino</b>',
                 bg=False, tickvals=[5, 8, 11, 14, 17], color_sequence=px.colors.sequential.Inferno_r)
 fig.show()
 # fig.write_html('plots/geral/html/trajsPS_vel.html')
@@ -56,7 +56,7 @@ gp_chuva['frequencia'] = gp_chuva['frequencia'] / gp_chuva['frequencia'].sum() *
 gp_chuva.head(5)
 
 # %%
-fig = wind_rose(gp_chuva, bg=False, kind='chuva', tickvals=[5, 8, 11, 14, 17], title='<b>Distribuição das massas de ar resultantes em chuva na Pedra do Sino')
+fig = wind_rose(gp_chuva, bg=False, kind='chuva', tickvals=[5, 8, 11, 14, 17], title='<b>Pedra do Sino</b>')
 fig.show()
 # fig.write_html('plots/geral/html/trajsPS_chuva.html')
 # fig.write_image('plots/geral/png/trajsPS_chuva.png')

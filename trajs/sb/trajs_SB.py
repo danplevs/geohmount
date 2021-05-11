@@ -46,7 +46,7 @@ gp_vel['frequencia'] = gp_vel['frequencia'] / gp_vel['frequencia'].sum() * 100
 gp_vel.head(5)
 
 # %%
-fig = wind_rose(gp_vel)
+fig = wind_rose(gp_vel, title='<b>Soberbo</b>')
 fig.show()
 # fig.write_html('plots/geral/html/trajsSB_vel.html')
 # fig.write_image('plots/geral/png/trajsSB_vel.png')
@@ -61,7 +61,7 @@ gp_chuva['frequencia'] = gp_chuva['frequencia'] / gp_chuva['frequencia'].sum() *
 gp_chuva.head(5)
 
 # %%
-fig = wind_rose(gp_chuva, kind='chuva')
+fig = wind_rose(gp_chuva, kind='chuva', title='<b>Soberbo</b>')
 fig.show()
 # fig.write_html('plots/geral/html/trajsSB_chuva.html')
 # fig.write_image('plots/geral/png/trajsSB_chuva.png')

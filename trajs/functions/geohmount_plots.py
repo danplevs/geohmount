@@ -1,7 +1,7 @@
 import plotly.express as px
 
 def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das massas de ar resultantes em chuva no Soberbo</b>', 
-             legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True, bg=True,
+             legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True, bg=True, width=800, height=450,
              color='velocidade_cat', color_sequence= px.colors.sequential.Plasma_r, font_color=None, template='plotly'):
         
     direcoes = ("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
@@ -26,7 +26,7 @@ def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das
     color_map = dict(zip(medidas, color_sequence))
     
     fig = px.bar_polar(dataframe, r='frequencia', theta='direcao_cat', color=color, color_discrete_map=color_map,
-                       category_orders=category_orders) 
+                       category_orders=category_orders, width=width, height=height) 
 
     fig.update_layout(template=template, 
                       paper_bgcolor=bgcolor,

@@ -34,10 +34,11 @@ def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das
                                   yanchor='top', 
                                   y=0.99, 
                                   xanchor='right', 
-                                  x=1.2,
+                                  x=1,
                                   font_color=font_color,
+                                  font_size=14,
                                   title=dict(
-                                      font_size=14,
+                                      font_size=15,
                                       font_color=font_color,
                                       text=legend_title)
                                  ), 

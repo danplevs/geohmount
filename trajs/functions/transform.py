@@ -1,7 +1,3 @@
-import os
-import sys
-
-
 def direcao_categorica(direcao_em_graus):
     direcoes = ("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
     indice = int(direcao_em_graus // 22.5)

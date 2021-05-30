@@ -2,7 +2,7 @@
 import base64
 import pandas as pd
 import chart_studio.plotly as py
-from trajs.functions.set_chart_studio import set_chart_studio
+from functions.set_chart_studio import set_chart_studio
 from trajs.functions.geohmount_plots import wind_rose
 from trajs.functions.watermark import plot_watermark
 # %%
@@ -24,7 +24,7 @@ fig = wind_rose(dataframe=gp_event, kind='chuva', title='<b>Pedra do Sino</b>',
 plot_watermark(fig, y=0.48, sizex=0.4, sizey=0.4)
 
 fig.show()
-fig.write_html('evt_642.html', include_plotlyjs='cdn', full_html=False)
-fig.write_image('evt_642.svg')
-fig.write_image('evt_642.png')
-py.plot(fig, filename='evt_642_ps', auto_open=False)
+# fig.write_html('evt_642.html', include_plotlyjs='cdn', full_html=False)
+# fig.write_image('evt_642.svg')
+# fig.write_image('evt_642.png')
+# py.plot(fig, filename='evt_642_ps', auto_open=False)

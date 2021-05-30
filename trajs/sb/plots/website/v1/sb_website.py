@@ -1,15 +1,14 @@
 # %%
-import base64
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
 import plotly.figure_factory as ff
 from plotly.subplots import make_subplots
 from trajs.functions.geohmount_plots import wind_rose
-
+from trajs.functions.watermark import plot_watermark
 
 # %%
-trajs = pd.read_csv('../../sb_resultado_manipulado.csv')
+trajs = pd.read_csv('../../../sb_resultado_manipulado.csv')
 trajs.drop('Unnamed: 0', axis=1, inplace=True)
 trajs.head()
 
@@ -55,9 +54,6 @@ medidas = ('5-20 mm', '20-35 mm', '35-50 mm', '50-65 mm', '65-80 mm', '80-95 mm'
 # %%
 dir_proportions
 # %%
-img = '/home/daniel/geohmount/code/logos-png/GEOHMOUNT-Logo-Cinzas.png'
-geohmount_logo = base64.b64encode(open(img, 'rb').read())
-# %%
 fig = make_subplots(rows=1, cols=2,
                     specs=[[{'type': 'table'}, {'type': 'polar'}]],
                     column_widths=[0.3, 0.7],
@@ -83,21 +79,7 @@ for index, value in enumerate(medidas):
         marker_color=px.colors.sequential.Blues[index]),
         row=1, col=2)
 
-fig.add_layout_image(
-    dict(
-        source=f'data:image/png;base64,{geohmount_logo.decode()}',
-        xref="paper",
-        yref="paper",
-        xanchor='center',
-        yanchor='middle',
-        x=0.5,
-        y=0.55,
-        sizex=0.7,
-        sizey=0.7,
-        sizing="contain",
-        opacity=0.13,
-        layer="above")
-)
+plot_watermark(fig)
 
 fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', width=1080, height=600,
                   legend=dict(traceorder='reversed', 
@@ -126,5 +108,5 @@ fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', width=1080, height=600,
                  ),
                 )   
 fig.show()
-fig.write_image('sb_trajs.png', width=1000, height = 750)
+# fig.write_image('sb_trajs.png', width=1000, height = 750)
 # fig.write_html('plots/website/sb_trajs.html')

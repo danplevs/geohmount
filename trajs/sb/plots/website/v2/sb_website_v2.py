@@ -1,9 +1,8 @@
 # %%
-import base64
 import pandas as pd
 import json
 import chart_studio.plotly as py
-from trajs.functions.set_chart_studio import set_chart_studio
+from functions.set_chart_studio import set_chart_studio
 from trajs.functions.geohmount_plots import wind_rose
 from trajs.functions.watermark import plot_watermark
 
@@ -23,9 +22,6 @@ gp_event = event.groupby(['direcao_cat', 'evt_soma_chuva_cat']).size().reset_ind
 # %%
 gp_event['frequencia'] = gp_event['frequencia'] / gp_event['frequencia'].sum() * 100
 gp_event
-# %%
-img = '/home/daniel/geohmount/code/logos-png/GEOHMOUNT-Logo-Cinzas.png'
-geohmount_logo = base64.b64encode(open(img, 'rb').read())
 
 # %%
 set_chart_studio()

@@ -5,7 +5,7 @@ from trajs.functions.transform import direcao_categorica, velocidade_categorica,
 from trajs.functions.geohmount_plots import wind_rose
 
 # %%
-trajs = pd.read_csv('ps_resultado.csv', sep=";")
+trajs = pd.read_csv('data/ps_resultado.csv', sep=";")
 trajs.head()
 
 # %%

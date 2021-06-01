@@ -7,7 +7,7 @@ set_chart_studio()
 # %%
 import pandas as pd
 
-rios = pd.read_csv("rios_medias.csv", sep=';')
+rios = pd.read_csv("data/rios_medias.csv", sep=';')
 rios.head()
 
 

@@ -1,14 +1,14 @@
 # %%
 import pandas as pd
 
-df = pd.read_csv("chuva_2019.csv", sep=';', encoding="latin1")
+df = pd.read_csv("data/chuva_2019.csv", sep=';', encoding="latin1")
 df
 
 
 # %%
 import pandas as pd
 
-df2 = pd.read_csv("sazonalidade.csv", sep=';', encoding="latin1")
+df2 = pd.read_csv("data/sazonalidade.csv", sep=';', encoding="latin1")
 df2.head()
 
 

@@ -6,7 +6,7 @@ from trajs.functions.geohmount_plots import wind_rose
 
 
 # %%
-trajs = pd.read_csv('sb_resultado.csv', sep=";")
+trajs = pd.read_csv('data/sb_resultado.csv', sep=";")
 trajs.head()
 
 # %%

@@ -2,7 +2,7 @@
 import pandas as pd
 import plotly.express as px
 # %%
-fire_outbreaks = pd.read_csv('fire_outbreaks.csv')
+fire_outbreaks = pd.read_csv('data/fire_outbreaks.csv')
 fire_outbreaks.head()
 # %%
 columns_to_hover = ('riscofogo', 'latitude', 'longitude', 'data/hora')

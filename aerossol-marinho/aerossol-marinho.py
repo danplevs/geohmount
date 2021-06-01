@@ -10,7 +10,7 @@ set_chart_studio()
 # %%
 import pandas as pd
 
-nacl = pd.read_csv('chuva_nacl.csv', sep=';')
+nacl = pd.read_csv('data/chuva_nacl.csv', sep=';')
 nacl.head()
 
 

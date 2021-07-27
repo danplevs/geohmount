@@ -1,14 +1,17 @@
 # %%
+import sys
+sys.path.append('C:/Users/daniel/OneDrive/geohmount/code/trajs/functions')
+# %%
+import sys
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
 import plotly.figure_factory as ff
 from plotly.subplots import make_subplots
-from trajs.functions.geohmount_plots import wind_rose
-from trajs.functions.watermark import plot_watermark
+from watermark import plot_watermark
 
 # %%
-trajs = pd.read_csv('../../../sb_resultado_manipulado.csv')
+trajs = pd.read_csv('../../../data/sb_resultado_manipulado.csv')
 trajs.drop('Unnamed: 0', axis=1, inplace=True)
 trajs.head()
 
@@ -79,8 +82,6 @@ for index, value in enumerate(medidas):
         marker_color=px.colors.sequential.Blues[index]),
         row=1, col=2)
 
-plot_watermark(fig)
-
 fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', width=1080, height=600,
                   legend=dict(traceorder='reversed', 
                                   yanchor='top', 
@@ -108,5 +109,5 @@ fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', width=1080, height=600,
                  ),
                 )   
 fig.show()
-# fig.write_image('sb_trajs.png', width=1000, height = 750)
+fig.write_image('sb_trajs_no_watermark.png', width=1000, height = 750)
 # fig.write_html('plots/website/sb_trajs.html')

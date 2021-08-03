@@ -65,7 +65,7 @@ plt.ylabel('%')
 plt.title('Direções (período seco)')
 plt.show()
 # atualiza a figura
-# fig.savefig('proporcao_direcoes.png')
+# fig.savefig('plots/analises/proporcao_direcoes_seco.svg')
 
 
 # %%
@@ -82,7 +82,7 @@ plt.ylabel('%')
 plt.title('Direções (período úmido)')
 plt.show()
 # atualiza a figura
-# fig.savefig('proporcao_direcoes.png')
+# fig.savefig('plots/analises/proporcao_direcoes_umido.svg')
 
 
 # %%
@@ -99,7 +99,7 @@ plt.ylabel('%')
 plt.title('Direções')
 plt.show()
 # atualiza a figura
-# fig.savefig('proporcao_direcoes.png')  
+# fig.savefig('plots/analises/proporcao_direcoes.svg')  
 
 
 # %%
@@ -116,7 +116,7 @@ sns.barplot(x=prop_velocidades.index, y=prop_velocidades, palette='magma_r')
 plt.ylabel('%')
 plt.title('Velocidades')
 # atualiza a figura
-# fig.savefig('proporcao_velocidades')
+# fig.savefig('plots/analises/proporcao_velocidades.svg')
 
 
 # %%
@@ -132,7 +132,7 @@ sns.barplot(x=prop_chuvas.index, y=prop_chuvas, palette='Blues')
 plt.ylabel('%')
 plt.title('Precipitação')
 # atualiza a figura
-# fig.savefig('proporcao_chuva.png')
+# fig.savefig('plots/analises/proporcao_chuva.svg')
 
 
 # %%
@@ -140,7 +140,7 @@ fig = plt.figure(figsize=(16, 8))
 sns.boxplot(data=trajs_659, x='direcao_cat', y='evt_soma_chuva')
 plt.ylabel('Soma de precipitação do evento (mm)'), plt.xlabel('Direção')
 # atualiza a figura
-# fig.savefig('chuva_direcoes_boxplot.png')
+# fig.savefig('plots/analises/dist_chuva_direcoes.svg')
 
 
 # %%
@@ -149,4 +149,4 @@ fig = plt.figure(figsize=(12, 8))
 sns.boxplot(data=principais_direcoes, x='direcao_cat', y='evt_soma_chuva')
 plt.ylabel('Soma de precipitação do evento (mm)'), plt.xlabel('Direção')
 # atualiza a figura
-#fig.savefig('principais_direcoes.png')
+# fig.savefig('plots/analises/dist_chuva_principais_direcoes.svg')

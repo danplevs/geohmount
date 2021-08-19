@@ -1,6 +1,7 @@
 name: geohmount
 channels:
   - conda-forge
+  - plotly
   - defaults
 dependencies:
   - python=3.9
@@ -12,3 +13,4 @@ dependencies:
   - ipykernel=6.2
   - notebook=6.4
   - python-dotenv=0.19
+  - chart_studio=1.1

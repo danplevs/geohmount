@@ -1,4 +1,5 @@
 import plotly.express as px
+import base64
 
 def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das massas de ar resultantes em chuva no Soberbo</b>', 
              legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True, bg=True, width=800, height=450,
@@ -60,3 +61,25 @@ def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das
     fig.update_traces(hovertemplate='<b>%{theta}</b><br>' + 'frequência: %{r:.1f}%')
     
     return fig
+
+def watermark(figure, xref="paper", yref="paper", xanchor='center', yanchor='middle', 
+                   x=0.5, y=0.5, sizex=0.5, sizey=0.5, sizing='contain', opacity=0.13, layer="above"):
+
+    img = 'C:/Users/daniel/OneDrive/geohmount/code/logos-png/GEOHMOUNT-Logo-Cinzas.png'
+    geohmount_logo = base64.b64encode(open(img, 'rb').read())
+
+    figure.add_layout_image(
+    dict(
+        source=f'data:image/png;base64,{geohmount_logo.decode()}',
+        xref=xref,
+        yref=yref,
+        xanchor=xanchor,
+        yanchor=yanchor,
+        x=x,
+        y=y,
+        sizex=sizex,
+        sizey=sizey,
+        sizing=sizing,
+        opacity=opacity,
+        layer=layer)
+)

@@ -1,0 +1,13 @@
+name: geohmount
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - matplotlib
+  - seaborn
+  - plotly
+  - python-kaleido
+  - ipykernel
+  - notebook

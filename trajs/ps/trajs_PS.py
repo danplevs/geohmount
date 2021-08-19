@@ -1,8 +1,8 @@
 # %%
 import pandas as pd
 import plotly.express as px
-from trajs.functions.transform import direcao_categorica, velocidade_categorica, ps_velocidade_categorica, chuva_categorica
-from trajs.functions.geohmount_plots import wind_rose
+from geohmount import stringify_direction, stringify_speed, stringify_rain, wind_rose
+from geohmount.process import stringify_speed_ps
 
 # %%
 trajs = pd.read_csv('data/ps_resultado.csv', sep=";")
@@ -20,15 +20,15 @@ trajs.head()
 trajs['data'] = pd.to_datetime(trajs['data'], dayfirst=True, exact=False)
 
 # %%
-trajs['direcao_cat'] = trajs['direcao'].apply(direcao_categorica)
+trajs['direcao_cat'] = trajs['direcao'].apply(stringify_direction)
 trajs.head(10)
 
 # %%
-trajs['velocidade_cat'] = trajs['velocidade'].apply(ps_velocidade_categorica)
+trajs['velocidade_cat'] = trajs['velocidade'].apply(stringify_speed_ps)
 trajs.head(10)
 
 # %%
-trajs['evt_soma_chuva_cat'] = trajs['evt_soma_chuva'].apply(chuva_categorica)
+trajs['evt_soma_chuva_cat'] = trajs['evt_soma_chuva'].apply(stringify_rain)
 trajs.head(10)
 
 # %%

@@ -1,27 +1,22 @@
 # %%
-from functions.set_chart_studio import set_chart_studio
-from trajs.functions.watermark import plot_watermark
-
+from geohmount import set_chart_studio, watermark
+import plotly
+import plotly.graph_objects as go
+import pandas as pd
 
 # %%
 set_chart_studio()
 
-
 # %%
-import pandas as pd
-
 nacl = pd.read_csv('data/chuva_nacl.csv', sep=';')
 nacl.head()
-
 
 # %%
 nacl.dtypes
 
-
 # %%
 nacl['Ponto'] = nacl['Amostras'].str.slice(start=0, stop=2)
 nacl.head()
-
 
 # %%
 sb = nacl.query("Ponto == 'SB'")
@@ -29,23 +24,16 @@ ps = nacl.query("Ponto == 'PS'")
 bm = nacl.query("Ponto == 'BM'")
 sm = nacl.query("Ponto == 'SM'")
 
-
 # %%
 sm
-
 
 # %%
 sm = sm.drop(43)
 
-
 # %%
 config = {'displayModeBar': True, 'toImageButtonOptions': {'height': None, 'width': None}}
 
-
 # %%
-import plotly.graph_objects as go
-import plotly
-
 fig = go.Figure()
 
 fig.add_trace(go.Scatter(
@@ -83,7 +71,7 @@ fig.add_trace(go.Scatter(
     line=dict(color='darkgreen', dash='dot', width=2)
 ))
 
-plot_watermark(fig)
+watermark(fig)
 
 fig.update_traces(hovertemplate='<b>Na<sup>+</sup>: %{x:.2f}<br>'+'<b>Cl<sup>-</sup>: %{y:.2f}')
 fig.update_yaxes(tickvals=(0, 20, 40, 60, 80, 100, 120), title=dict(text='<b>Cl<sup>-</sup> (mol ha<sup>-1</sup>)</b>', font_size=16), tickfont=dict(size=16))

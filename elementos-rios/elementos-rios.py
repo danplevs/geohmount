@@ -1,20 +1,19 @@
 # %%
-from functions.set_chart_studio import set_chart_studio
-
-set_chart_studio()
-
+from geohmount import set_chart_studio, watermark
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 
 # %%
-import pandas as pd
+set_chart_studio()
 
+# %%
 rios = pd.read_csv("data/rios_medias.csv", sep=';')
 rios.head()
-
 
 # %%
 rios = rios.rename(columns={'?': 'Condutividade (µS cm<sup>-1</sup>)', 'Si': '[H<sub>4</sub>SiO<sub>4</sub>]', 'HCO3': '[HCO<sub>3</sub><sup>-</sup>]', 'Na': '[Na<sup>+</sup>]', 'Cl': '[Cl<sup>-</sup>]', 'Ca': '[Ca<sup>2+</sup>]','SO4': '[SO<sub>4</sub><sup>2-</sup>]', 'K': '[K<sup>+</sup>]', 'Mg': '[Mg<sup>2+</sup>]'})
 rios.head()
-
 
 # %%
 var_principais = ['Ponto', 'pH', 'Condutividade (µS cm<sup>-1</sup>)', '[H<sub>4</sub>SiO<sub>4</sub>]', '[HCO<sub>3</sub><sup>-</sup>]', '[Na<sup>+</sup>]', '[Cl<sup>-</sup>]', '[Ca<sup>2+</sup>]', '[SO<sub>4</sub><sup>2-</sup>]', '[K<sup>+</sup>]', '[Mg<sup>2+</sup>]']
@@ -24,22 +23,15 @@ elem_principais = ['[H<sub>4</sub>SiO<sub>4</sub>]', '[HCO<sub>3</sub><sup>-</su
 
 df_principais = rios[var_principais]
 
-
 # %%
 config = {'displayModeBar': True, 'toImageButtonOptions': {'height': None, 'width': None}}
-
 
 # %%
 blue = 'rgb(0, 153, 216)'
 green = 'rgb(0, 90, 74)'
 brown = 'rgb(86, 34, 18)'
 
-
 # %%
-import plotly.express as px
-import plotly.graph_objects as go
-from trajs.functions.watermark import plot_watermark
-
 bm = df_principais.iloc[0]
 sb = df_principais.iloc[1]
 sm = df_principais.iloc[2]
@@ -50,7 +42,7 @@ fig = go.Figure(data=[
     go.Bar(name='Rio Santa Marta', x=fis_qui, y=sm[fis_qui], marker=dict(color=brown)),
 ])
 
-plot_watermark(fig, y=0.6)
+watermark(fig, y=0.6)
 
 fig.update_layout(width=920, height=530, template='plotly_white', barmode='group', bargroupgap=0.1, title=dict(text='<b>Dados fisico-químicos</b>', x=0.5, y=0.93, font_size=20), legend=dict(font_size=13))
 fig.update_yaxes(tickfont=dict(size=15), tick0=0, dtick=2)
@@ -67,7 +59,7 @@ fig = go.Figure(data=[
     go.Bar(name='Rio Santa Marta', x=elem_principais, y=sm[elem_principais], marker=dict(color=brown)),
 ])
 
-plot_watermark(fig, y=0.6)
+watermark(fig, y=0.6)
 
 fig.update_yaxes(tickfont=dict(size=15))
 fig.update_xaxes(tickfont=dict(size=14))
@@ -98,7 +90,7 @@ fig = go.Figure(data=[
     go.Bar(name='Rio Santa Marta', x=elem_tracos, y=sm[elem_tracos], marker=dict(color=brown)),
 ])
 
-plot_watermark(fig)
+watermark(fig)
 
 fig.update_yaxes(tickfont=dict(size=15))
 fig.update_xaxes(tickfont=dict(size=14))

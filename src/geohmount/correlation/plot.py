@@ -58,8 +58,7 @@ def annotation(x, y, alpha=0.05, corr_method: str = "spearman") -> Dict[str, Uni
     confidence_interval = compute_confidence_interval(x, y, alpha, corr_method)
     correlation = set_correlation(x, y, corr_method)
     annotation_dict = dict(
-        text=f"ρ = {correlation[0]:.2f} (95% CI, [{confidence_interval[0]:.2f}, \
-            {confidence_interval[1]:.2f}], p = {correlation[1]:.3f})",
+        text=f"ρ = {correlation[0]:.2f} (95% CI, [{confidence_interval[0]:.2f}, {confidence_interval[1]:.2f}], p = {correlation[1]:.3f})",
         showarrow=False,
         yref="paper",
         xref="paper",
@@ -74,7 +73,7 @@ def scatterplot(
     corr_method: str = "spearman",
     marker_color=None,
     save=False,
-    filename=None,
+    file_name=None,
 ) -> go.Figure:
     """Return an interactive scatterplot that allows selection of the correlation pair.
 
@@ -155,7 +154,7 @@ def scatterplot(
     if save:
         config = {"toImageButtonOptions": {"width": 1000, "height": 800}}
 
-        fig.write_html(f"./plots/{filename}.html", config=config)
+        fig.write_html(f"./plots/{file_name}.html", config=config)
 
     fig.show()
 

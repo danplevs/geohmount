@@ -2,8 +2,8 @@ import plotly.express as px
 import base64
 
 def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das massas de ar resultantes em chuva no Soberbo</b>', 
-             legend_title='<b>Velocidade</b>', tickvals=[4, 6, 8, 10, 12], showticklabels=True, bg=True, width=800, height=450,
-             color='velocidade_cat', color_sequence= px.colors.sequential.Plasma_r, font_color=None, template='plotly'):
+             legend_title='<b>Velocidade</b>', legend_x=1, legend_y=0.99, tickvals=[4, 6, 8, 10, 12], showticklabels=True, bg=True, width=800, height=450,
+             color='velocidade_cat', color_sequence= px.colors.sequential.Plasma_r, font_color=None, template='plotly', font_size=14):
         
     direcoes = ("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
     if location == "sb":
@@ -33,28 +33,28 @@ def wind_rose(dataframe, kind='vel', location='sb', title='<b>Distribuição das
                       paper_bgcolor=bgcolor,
                       legend=dict(traceorder='reversed', 
                                   yanchor='top', 
-                                  y=0.99, 
+                                  y=legend_y, 
                                   xanchor='right', 
-                                  x=1,
+                                  x=legend_x,
                                   font_color=font_color,
-                                  font_size=14,
+                                  font_size=font_size-1,
                                   title=dict(
-                                      font_size=15,
+                                      font_size=font_size-1,
                                       font_color=font_color,
                                       text=legend_title)
                                  ), 
-                      title={'text': title, 'font_color': font_color, 'y': 0.98, 'x': 0.5, 'xref': 'paper'},  
+                      title={'text': title, 'font_size': font_size+1, 'font_color': font_color, 'y': 0.98, 'x': 0.5, 'xref': 'paper'},  
                       polar = dict(
                           radialaxis=dict(
                               showline=False,
                               showticklabels=showticklabels,
                               tickfont_color=font_color,
-                              tickfont_size=14,
+                              tickfont_size=font_size,
                               ticksuffix='%',
                               tickvals=tickvals,
                               tickangle=90,
                               angle=90), 
-                          angularaxis=dict(tickfont_size=15, tickfont_color=font_color)
+                          angularaxis=dict(tickfont_size=font_size, tickfont_color=font_color)
                       ),
                      )
 

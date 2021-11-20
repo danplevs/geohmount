@@ -7,7 +7,7 @@ evt_soma_chuva total de chuva no evento segundo a sua respectiva estação meteo
 evt_media_chuva média de chuva no evento segundo a sua respectiva estação meteorológica
 evt_max_chuva máxima de chuva no evento segundo a respectiva estação meteorológica
 direcao_graus direção da trajetória em graus
-velocidade velocidade da parcela de ar em km/h
+velocidade velocidade da parcela de ar em km/h, na última hora
 direcao_cat direção categórica da trajetória
 velocidade_cat velocidade categórica da massa de ar
 evt_soma_chuva_cat precipitação categórica acumulada no evento

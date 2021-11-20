@@ -1,18 +1,21 @@
 """Correlation plots."""
 import itertools
 from typing import Union, Dict
+from .utils import read_config
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from correlation import compute_confidence_interval, set_correlation
+from .correlation import compute_confidence_interval, set_correlation
+
+plots_default_folder = read_config("plots_folder")
 
 def heatmap(
     corr_matrix,
     cmap=sns.color_palette("coolwarm", as_cmap=True),
     save=False,
-    file_name="./plots/tmp_plot.svg",
+    file_name="tmp_plot.svg",
 ) -> plt.Axes:
     """Return a triangular heatmap of correlation coefficients.
 
@@ -49,7 +52,8 @@ def heatmap(
                     )
 
     if save:
-        plt.savefig(file_name, dpi=200, bbox_inches="tight")
+        save_path = plots_default_folder + file_name
+        plt.savefig(save_path, dpi=200, bbox_inches="tight")
 
     return ax
 
@@ -73,7 +77,7 @@ def scatterplot(
     corr_method: str = "spearman",
     marker_color=None,
     save=False,
-    file_name=None,
+    file_name="tmp_plot.html",
 ) -> go.Figure:
     """Return an interactive scatterplot that allows selection of the correlation pair.
 
@@ -154,7 +158,8 @@ def scatterplot(
     if save:
         config = {"toImageButtonOptions": {"width": 1000, "height": 800}}
 
-        fig.write_html(f"./plots/{file_name}.html", config=config)
+        save_path = plots_default_folder + file_name
+        fig.write_html(f"./plots/{file_name}", config=config)
 
     fig.show()
 

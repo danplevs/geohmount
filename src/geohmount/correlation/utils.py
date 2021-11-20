@@ -1,15 +1,19 @@
 """Helper functions to read and wrangle data."""
 import json
+from os import read
 from pathlib import Path
 import pandas as pd
 
+def read_config(object: str) -> str:
+    """Return an object from the JSON config file."""
+    config_file = Path("./config/config.json")
+    with config_file.open(mode="r", encoding="utf-8") as config:
+        object = json.load(config)[object]
+    return object
+
 def read_inventory(sheet="Rio", version=7):
     """Return a specific sheet and version of the inventory."""
-    config_file = Path("config.json")
-
-    with config_file.open(mode="r", encoding="utf-8") as config:
-        inventory_path = json.load(config)["inventory_path"]
-
+    inventory_path = read_config("inventory_path")
     inventory_path = inventory_path.replace("$", str(version))
     data_file = Path(inventory_path)
     inventory = pd.read_excel(data_file, sheet_name=sheet)

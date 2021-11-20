@@ -139,3 +139,6 @@ credentials.json
 
 # Photoshop
 *.psd
+
+# JSON
+*.json

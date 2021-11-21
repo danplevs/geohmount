@@ -55,7 +55,7 @@ def manipulate_data(inventory, subset_cols=None):
 
     return corr_dataframe
 
-def split_data(dataframe, split_column='Ponto', stations=("BM", "SB", "SM")) -> tuple:
+def split_data(dataframe, split_column="Ponto", stations=("BM", "SB", "SM")) -> tuple:
     """Split the dataframe according to the sample station"""
     return tuple(dataframe.loc[dataframe[split_column] == station] for station in stations)
 

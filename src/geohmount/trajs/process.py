@@ -9,8 +9,9 @@ def stringify_direction(direction_in_degrees):
     return direcoes[indice]
 
 def stringify_speed(speed_in_kmh):
-    velocidades = ("0-5 km/h", "5-10 km/h", "10-15 km/h", "15-20 km/h", "20-25 km/h", "25-30 km/h", "30-35 km/h", "35-40 km/h","40-45 km/h")
-    indice = int(speed_in_kmh // 5)
+    velocidades = ("0-10 km/h", "10-20 km/h", "20-30 km/h", "30-40 km/h", "40-50 km/h")
+    # velocidades = ("0-5 km/h", "5-10 km/h", "10-15 km/h", "15-20 km/h", "20-25 km/h", "25-30 km/h", "30-35 km/h", "35-40 km/h","40-45 km/h")
+    indice = int(speed_in_kmh // 10)
     return velocidades[indice]
 
 def stringify_speed_ps(speed_in_kmh):

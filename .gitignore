@@ -129,20 +129,6 @@ dmypy.json
 logos-png/desktop.ini
 *.ini
 
-# Credentials
-credentials.json
-
-# Images
-*.png
-*.jpeg
-*.jpg
-*.svg
-
-# Photoshop
-*.psd
-
 # JSON
 *.json
 
-# HTML
-*.html

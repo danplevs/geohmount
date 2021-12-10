@@ -135,6 +135,7 @@ credentials.json
 # Images
 *.png
 *.jpeg
+*.jpg
 *.svg
 
 # Photoshop
@@ -142,3 +143,6 @@ credentials.json
 
 # JSON
 *.json
+
+# HTML
+*.html

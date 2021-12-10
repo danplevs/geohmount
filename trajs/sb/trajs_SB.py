@@ -1,7 +1,7 @@
 # %%
 import pandas as pd
 import plotly.express as px
-from geohmount import stringify_direction, stringify_speed, stringify_rain, wind_rose
+from geohmount.trajs import stringify_direction, stringify_speed, stringify_rain, wind_rose
 
 # %%
 trajs = pd.read_csv('data/sb_resultado.csv', sep=";")
@@ -66,11 +66,11 @@ fig.show()
 # fig.write_image('plots/geral/svg/trajsSB_chuva.svg')
 
 # %%
-fig = wind_rose(gp_vel, font_color='black', title='<b>Soberbo</b>', legend_title='<b>Wind Speed</b>', color_sequence=px.colors.sequential.Inferno_r)
+fig = wind_rose(gp_vel, font_color='black', title='<b>SB</b>', legend_title='<b>Wind Speed</b>', color_sequence=px.colors.sequential.Inferno_r)
 fig.show()
-# fig.write_html('plots/artigo-yasmin/trajsSB_vel.html')
-# fig.write_image('plots/artigo-yasmin/trajsSB_vel.png')
-# fig.write_image('plots/artigo-yasmin/trajsSB_vel.svg')
+fig.write_html('plots/artigo-yasmin/trajsSB_vel.html')
+fig.write_image('plots/artigo-yasmin/trajsSB_vel.png')
+fig.write_image('plots/artigo-yasmin/trajsSB_vel.svg')
 
 # %%
 meses_chuvosos = ('Jan', 'Feb', 'Mar', 'Apr', 'Oct', 'Nov', 'Dec')

@@ -1,8 +1,7 @@
 # %%
 import pandas as pd
 import plotly.express as px
-from geohmount import stringify_direction, stringify_speed, stringify_rain, wind_rose
-from geohmount.process import stringify_speed_ps
+from geohmount.trajs import stringify_direction, stringify_speed, stringify_speed_ps, stringify_rain, wind_rose
 
 # %%
 trajs = pd.read_csv('data/ps_resultado.csv', sep=";")
@@ -63,11 +62,12 @@ fig.show()
 # fig.write_image('plots/geral/svg/trajsPS_chuva.svg')
 
 # %%
-fig = wind_rose(gp_vel, location='ps', tickvals=[5, 8, 11, 14, 17], font_color='black', title='<b>Pedra do Sino</b>', legend_title='<b>Wind Speed</b>', color_sequence=px.colors.sequential.Inferno_r)
+fig = wind_rose(gp_vel, location='ps', tickvals=[4, 8, 12, 18], font_color='black', title='<b>PS</b>', legend_title='<b>Wind Speed</b>', color_sequence=px.colors.sequential.Inferno_r)
 fig.show()
-# fig.write_html('plots/artigo-yasmin/trajsPS_vel.html')
-# fig.write_image('plots/artigo-yasmin/trajsPS_vel.png')
-# fig.write_image('plots/artigo-yasmin/trajsPS_vel.svg')
+# tickvals=[5, 8, 11, 14, 17]
+fig.write_html('plots/artigo-yasmin/trajsPS_vel.html')
+fig.write_image('plots/artigo-yasmin/trajsPS_vel.png')
+fig.write_image('plots/artigo-yasmin/trajsPS_vel.svg')
 
 # %%
 meses_chuvosos = ('Jan', 'Feb', 'Mar', 'Apr', 'Oct', 'Nov', 'Dec')

@@ -4,16 +4,15 @@ from os import read
 from pathlib import Path
 import pandas as pd
 
-def read_config(object: str) -> str:
+def read_config(config_file: Path, object: str) -> str:
     """Return an object from the JSON config file."""
-    config_file = Path("./config/config.json")
     with config_file.open(mode="r", encoding="utf-8") as config:
         object = json.load(config)[object]
     return object
 
 def read_inventory(sheet="Rio", version=7):
     """Return a specific sheet and version of the inventory."""
-    inventory_path = read_config("inventory_path")
+    inventory_path = read_config(Path("~/OneDrive/geohmount/code/src/geohmount/correlation/config/config.json"), "inventory_path")
     inventory_path = inventory_path.replace("$", str(version))
     data_file = Path(inventory_path)
     inventory = pd.read_excel(data_file, sheet_name=sheet)
@@ -60,5 +59,4 @@ def split_data(dataframe, split_column="Ponto", stations=("BM", "SB", "SM")) -> 
     return tuple(dataframe.loc[dataframe[split_column] == station] for station in stations)
 
 if __name__ == "__main__":
-    read_inventory()
-    print("Success!")
+    print(read_config(Path("C:/Users/daniel/OneDrive/geohmount/code/src/geohmount/correlation/config/config.json"), "plots_folder"))

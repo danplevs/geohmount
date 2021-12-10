@@ -9,13 +9,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from .correlation import compute_confidence_interval, set_correlation
 
-plots_default_folder = read_config("plots_folder")
 
 def heatmap(
     corr_matrix,
     cmap=sns.color_palette("coolwarm", as_cmap=True),
     save=False,
-    file_name="tmp_plot.svg",
+    path="./tmp_plot.svg",
 ) -> plt.Axes:
     """Return a triangular heatmap of correlation coefficients.
 
@@ -27,7 +26,7 @@ def heatmap(
         Plot color map.
     save: bool
         If True, save the plot to a file in the path specified at `file_name`.
-    file_name: str
+    path: str
         Path to save the plot.
 
     Returns
@@ -52,8 +51,7 @@ def heatmap(
                     )
 
     if save:
-        save_path = plots_default_folder + file_name
-        plt.savefig(save_path, dpi=200, bbox_inches="tight")
+        plt.savefig(path, dpi=200, bbox_inches="tight")
 
     return ax
 
@@ -77,7 +75,10 @@ def scatterplot(
     corr_method: str = "spearman",
     marker_color=None,
     save=False,
-    file_name="tmp_plot.html",
+    path="./tmp_plot.html",
+    height=800,
+    width=1000,
+    title=None
 ) -> go.Figure:
     """Return an interactive scatterplot that allows selection of the correlation pair.
 
@@ -91,7 +92,7 @@ def scatterplot(
         Marker color.
     save: bool
         If True, save the plot to a file in the path specified at `file_name`.
-    file_name: str
+    path: str
         Path to save the plot.
 
     Returns
@@ -104,7 +105,7 @@ def scatterplot(
 
     # Create figure
     fig = px.scatter(
-        dataframe, x=num_data.columns[0], y=num_data.columns[1], custom_data=["Amostra"]
+        dataframe, x=num_data.columns[0], y=num_data.columns[1], custom_data=["Amostra"], width=width, height=height, title=title
     )
 
     fig.add_annotation(
@@ -153,13 +154,13 @@ def scatterplot(
             )
         ],
         font_size=18,
+        title=title
     )
 
     if save:
         config = {"toImageButtonOptions": {"width": 1000, "height": 800}}
 
-        save_path = plots_default_folder + file_name
-        fig.write_html(f"./plots/{file_name}", config=config)
+        fig.write_html(path, config=config)
 
     fig.show()
 

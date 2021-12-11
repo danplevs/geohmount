@@ -1,23 +1,14 @@
 """Helper functions to read and wrangle data."""
-import json
-from os import read
+from geohmount.config import Config
 from pathlib import Path
 import pandas as pd
 
-def read_config(config_file: Path, object: str) -> str:
-    """Return an object from the JSON config file."""
-    with config_file.open(mode="r", encoding="utf-8") as config:
-        object = json.load(config)[object]
-    return object
 
 def read_inventory(sheet="Rio", version=7):
     """Return a specific sheet and version of the inventory."""
-    inventory_path = read_config(Path("~/OneDrive/geohmount/code/src/geohmount/correlation/config/config.json"), "inventory_path")
-    inventory_path = inventory_path.replace("$", str(version))
-    data_file = Path(inventory_path)
-    inventory = pd.read_excel(data_file, sheet_name=sheet)
+    inventory_path = Config.read_config().inventory_path.replace("$", str(version))
+    inventory = pd.read_excel(Path(inventory_path), sheet_name=sheet)
     return inventory
-
 
 def manipulate_data(inventory, subset_cols=None):
     """Return a cleaned dataset."""
@@ -57,6 +48,3 @@ def manipulate_data(inventory, subset_cols=None):
 def split_data(dataframe, split_column="Ponto", stations=("BM", "SB", "SM")) -> tuple:
     """Split the dataframe according to the sample station"""
     return tuple(dataframe.loc[dataframe[split_column] == station] for station in stations)
-
-if __name__ == "__main__":
-    print(read_config(Path("C:/Users/daniel/OneDrive/geohmount/code/src/geohmount/correlation/config/config.json"), "plots_folder"))

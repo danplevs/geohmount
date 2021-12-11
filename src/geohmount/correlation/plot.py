@@ -1,7 +1,6 @@
 """Correlation plots."""
 import itertools
 from typing import Union, Dict
-from .utils import read_config
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np

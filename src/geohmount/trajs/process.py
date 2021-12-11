@@ -1,12 +1,7 @@
-def stringify_direction(direction_in_degrees):
-    direcoes = ("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
-    indice = int(direction_in_degrees // 22.5)
-    resto = direction_in_degrees % 22.5
-    if resto > 11.25:
-        indice += 1
-    if indice == 16:
-        indice = 0
-    return direcoes[indice]
+def degrees_to_cardinal(degrees):
+    directions = ('N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW')
+    index = round(degrees / (360 / len(directions)))
+    return directions[index % len(directions)]
 
 def stringify_speed(speed_in_kmh):
     velocidades = ("0-10 km/h", "10-20 km/h", "20-30 km/h", "30-40 km/h", "40-50 km/h")

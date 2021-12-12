@@ -1,5 +1,5 @@
 """Correlation analysis"""
-from typing import Callable, Dict
+from typing import Callable, Dict, Union
 import numpy as np
 from scipy import stats
 import pandas as pd

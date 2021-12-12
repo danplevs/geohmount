@@ -1,19 +1,20 @@
 """Correlation plots."""
 import itertools
-from typing import Union, Dict
+from typing import Union, Sequence
+from pathlib import Path
+from pandas.core.frame import DataFrame
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from .correlation import compute_confidence_interval, set_correlation
+from .correlation import annotation
 
 
 def heatmap(
-    corr_matrix,
-    cmap=sns.color_palette("coolwarm", as_cmap=True),
-    save=False,
-    path="./tmp_plot.svg",
+    corr_matrix: DataFrame,
+    cmap: Sequence = sns.color_palette("coolwarm", as_cmap=True),
+    save_path: Union[Path, str] = "",
 ) -> plt.Axes:
     """Return a triangular heatmap of correlation coefficients.
 
@@ -23,9 +24,7 @@ def heatmap(
         Dataframe of correlation coefficients.
     cmap : Sequence
         Plot color map.
-    save: bool
-        If True, save the plot to a file in the path specified at `file_name`.
-    path: str
+    save_path: str
         Path to save the plot.
 
     Returns
@@ -49,35 +48,19 @@ def heatmap(
                     cbar_kws={"shrink": 0.8},
                     )
 
-    if save:
-        plt.savefig(path, dpi=200, bbox_inches="tight")
+    if save_path:
+        plt.savefig(save_path, dpi=200, bbox_inches="tight")
 
     return ax
 
-def annotation(x, y, alpha=0.05, corr_method: str = "spearman") -> Dict[str, Union[str, float]]:
-    """Return a dict containing the correlation results as a string and plotting information."""
-    confidence_interval = compute_confidence_interval(x, y, alpha, corr_method)
-    correlation = set_correlation(x, y, corr_method)
-    annotation_dict = dict(
-        text=f"ρ = {correlation[0]:.2f} (95% CI, [{confidence_interval[0]:.2f}, {confidence_interval[1]:.2f}], p = {correlation[1]:.3f})",
-        showarrow=False,
-        yref="paper",
-        xref="paper",
-        x=0.99,
-        y=1,
-    )
-    return annotation_dict
-
-
 def scatterplot(
-    dataframe,
+    dataframe: DataFrame,
     corr_method: str = "spearman",
-    marker_color=None,
-    save=False,
-    path="./tmp_plot.html",
-    height=800,
-    width=1000,
-    title=None
+    marker_color: tuple = None,
+    save_path: Union[Path, str] = "",
+    height: int = 800,
+    width: int = 1000,
+    title: str = None
 ) -> go.Figure:
     """Return an interactive scatterplot that allows selection of the correlation pair.
 
@@ -89,9 +72,7 @@ def scatterplot(
         Correlation method, either `pearson` or `spearman`.
     marker_color : RGB tuple
         Marker color.
-    save: bool
-        If True, save the plot to a file in the path specified at `file_name`.
-    path: str
+    save_path: str
         Path to save the plot.
 
     Returns
@@ -156,10 +137,10 @@ def scatterplot(
         title=title
     )
 
-    if save:
-        config = {"toImageButtonOptions": {"width": 1000, "height": 800}}
+    if save_path:
+        config = {"toImageButtonOptions": {"width": width, "height": height}}
 
-        fig.write_html(path, config=config)
+        fig.write_html(save_path, config=config)
 
     fig.show()
 

@@ -102,3 +102,17 @@ def compute_correlation(dataframe: pd.DataFrame, method="spearman") -> Dict[str,
         np.tril(np.ones_like(rho, dtype=bool), -1)
     )
     return dict(rho=rho, p_value=p_value, report=report, ci=confidence_interval)
+
+def annotation(x, y, alpha=0.05, corr_method: str = "spearman") -> Dict[str, Union[str, float]]:
+    """Return a dict containing the correlation results as a string and plotting information."""
+    confidence_interval = compute_confidence_interval(x, y, alpha, corr_method)
+    correlation = set_correlation(x, y, corr_method)
+    annotation_dict = dict(
+        text=f"ρ = {correlation[0]:.2f} (95% CI, [{confidence_interval[0]:.2f}, {confidence_interval[1]:.2f}], p = {correlation[1]:.3f})",
+        showarrow=False,
+        yref="paper",
+        xref="paper",
+        x=0.99,
+        y=1,
+    )
+    return annotation_dict

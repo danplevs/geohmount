@@ -62,7 +62,7 @@ def compute_confidence_interval(x, y, alpha=0.05, corr_method: str = "spearman")
     confidence_interval = np.tanh(norm_confidence_interval)
     return confidence_interval
 
-def compute_correlation(dataframe: pd.DataFrame, method="spearman") -> Dict[str, pd.DataFrame]:
+def compute_correlation(dataframe: pd.DataFrame, method="spearman", alpha=0.05) -> Dict[str, pd.DataFrame]:
     """Compute the correlation analysis and return a dict of pandas dataframes as results."""
     corr_dataframe = dataframe.select_dtypes(include=np.number)
     corr_method = set_correlation_method(method)
@@ -75,7 +75,7 @@ def compute_correlation(dataframe: pd.DataFrame, method="spearman") -> Dict[str,
         - np.eye(*rho.shape)
     ).round(3)
     p_value = p_value.where(np.tril(np.ones_like(p_value, dtype=bool), -1))
-    p_star = p_value.applymap(lambda x: "*" if x <= 0.05 else "")
+    p_star = p_value.applymap(lambda x: "*" if x <= alpha else "")
     # report table
     str_rho = rho.applymap(lambda x: f"{x:.2f}")
     report = str_rho + p_star

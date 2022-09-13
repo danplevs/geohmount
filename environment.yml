@@ -15,3 +15,4 @@ dependencies:
   - python-dotenv=0.19
   - chart-studio=1.1
   - pretty_html_table=0.9
+  - openpyxl=3.0

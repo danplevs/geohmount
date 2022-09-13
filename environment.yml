@@ -14,3 +14,4 @@ dependencies:
   - notebook=6.4
   - python-dotenv=0.19
   - chart-studio=1.1
+  - pretty_html_table=0.9

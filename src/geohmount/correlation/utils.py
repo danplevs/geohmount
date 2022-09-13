@@ -33,6 +33,7 @@ def manipulate_data(inventory, subset_cols=None):
             "SO4",
             "NID_CI",
             "PO4_ESP",
+            "COD",
             "HCO3_AUTO",
             "Si",
             "Fe",

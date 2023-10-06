@@ -12,6 +12,7 @@ class Config:
     chart_studio_api_key: str
     inventory_path: str
     corr_plots_folder: str
+    watermark_path: str
     config_file: Path
     
     @classmethod

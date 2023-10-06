@@ -3,6 +3,8 @@ import plotly.express as px
 import base64
 from pandas.core.frame import DataFrame
 
+from geohmount.config import Config
+
 def wind_rose(
     data: DataFrame,
     r: str,
@@ -161,7 +163,7 @@ def watermark(
     layer="above",
 ):
 
-    img = "~/OneDrive/geohmount/code/logos-png/GEOHMOUNT-Logo-Cinzas.png"
+    img = Config.read_config().watermark_path
     geohmount_logo = base64.b64encode(open(img, "rb").read())
 
     figure.add_layout_image(

@@ -132,7 +132,6 @@ def wind_rose(
             radialaxis=dict(
                 showline=False,
                 showticklabels=showticklabels,
-                tickfont_color=font_color,
                 tickfont_size=font_size,
                 ticksuffix="%",
                 tickvals=tickvals,

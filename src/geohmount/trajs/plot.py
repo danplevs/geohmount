@@ -10,7 +10,7 @@ def wind_rose(
     kind="vel",
     location="sb",
     title: str = None,
-    legend_title: str = None,
+    legend_title: str = "Wind Speed",
     legend_x: Union[int, float] = 1,
     legend_y: Union[int, float] = 0.99,
     tickvals: list = [4, 6, 8, 10, 12],
@@ -44,7 +44,6 @@ def wind_rose(
         "NNW",
     )
     if location == "sb":
-        # medidas = ("0-5 km/h", "5-10 km/h", "10-15 km/h", "15-20 km/h", "20-25 km/h", "25-30 km/h", "30-35 km/h", "35-40 km/h","40-45 km/h")
         medidas = ("0-10 km/h", "10-20 km/h", "20-30 km/h", "30-40 km/h", "40-50 km/h")
     elif location == "ps":
         medidas = (
@@ -70,7 +69,7 @@ def wind_rose(
     category_orders = {theta: direcoes, color: medidas}
 
     if kind == "chuva":
-        legend_title = "<b>Precipitação</b>"
+        legend_title = "<b>Precipitation</b>"
         color = "evt_soma_chuva_cat"
         color_sequence = px.colors.sequential.Blues
         medidas = (
@@ -83,7 +82,7 @@ def wind_rose(
             "95-110 mm",
             "110-125 mm",
             "125-130 mm",
-        )
+        )   
         category_orders = {"direcao_cat": direcoes, "evt_soma_chuva_cat": medidas}
 
     if bg == True:
@@ -162,7 +161,7 @@ def watermark(
     layer="above",
 ):
 
-    img = "C:/Users/daniel/OneDrive/geohmount/code/logos-png/GEOHMOUNT-Logo-Cinzas.png"
+    img = "~/OneDrive/geohmount/code/logos-png/GEOHMOUNT-Logo-Cinzas.png"
     geohmount_logo = base64.b64encode(open(img, "rb").read())
 
     figure.add_layout_image(

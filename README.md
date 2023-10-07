@@ -28,4 +28,4 @@ In this project, [a correlation analysis](https://danplevs.github.io/geohmount/)
 ![Correlation analysis of physico-chemical variables](img/correlation-demo.png)
 
 ## About
-These analyses composed my first applied project built with Python, as part of one of my undergraduate researches in the Geochemistry field.
+These analyses composed my first applied project built with Python, as part of one of my undergraduate researches in the Geochemistry field. I had recently taken a python course and the need arose to make these plots. I decided to accept the challenge and the result, shown above, was surprisingly positive, making me even more excited to develop my programming skills.

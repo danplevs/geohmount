@@ -23,7 +23,7 @@ Another information that can be extracted from the plots colored by precipitatio
 
 Correlation analyses can be imployed to explore relations between numerical variables (linear, exponential, etc.) for different applications. 
 
-In this project, a correlation analysis of chemical variables in the aforementioned locations is presented in a table, a heatmap and a interactive scatterplot, allowing screening and more detailed investigation of the variables relationships. The interactivity of [Plotly](https://plotly.com/) charts were used to allow the selection of X and Y data and automatic update of Spearman's correlation metrics.
+In this project, [a correlation analysis](https://danplevs.github.io/geohmount/) of chemical variables in the aforementioned locations is presented in a table, a heatmap and a interactive scatterplot, allowing screening and more detailed investigation of the variables relationships. The interactivity of [Plotly](https://plotly.com/) charts were used to allow the selection of X and Y data and automatic update of Spearman's correlation metrics.
 
 ![Correlation analysis of physico-chemical variables](img/correlation-demo.png)
 
